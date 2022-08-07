@@ -52,9 +52,10 @@ export default {
     height: 100% !important;
     border: 2px solid ${(props) => buttonVariant[props.variant].borderColor} !important;
     border-radius: ${(props) =>
-      props.borderRadius ? props.borderRadius : "5px"} !important;
+      props.borderRadius ? props.borderRadius : "8px"} !important;
     text-decoration: none !important;
     transition: all 0.3s !important;
+    box-shadow: 0px 4px 8px -4px rgba(76, 78, 100, 0.42);
     gap: 0.313rem !important;
 
     > div {
