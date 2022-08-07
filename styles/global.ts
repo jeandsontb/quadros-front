@@ -59,7 +59,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   :root {
-    --main:#26C6F9;
+    --main:#26C6F9; // cor inicial do botão
     --secondary:#1B1D36;
     --bg:#F6F8F9;
     --white: #ffffff;
@@ -67,20 +67,8 @@ export const GlobalStyle = createGlobalStyle`
 
     --pantone: #F4F8F7;
 
-    --gray-200: #E2E8F0;
-    --gray-400: #A0AEC0;
-    --gray-600: #8B97B1;
-    --gray-700: #777E8A;
-
-
-    --pink:#ED2E7E;
-    --rose:#F59090;
-    --violet:#9290F5;
-    --green:#00BA88;
-
-    --yellow:#F4B740;
-    --purple:#4164E3;
-    --red:#ed2e7e;
+    --gray-500: rgba(76, 78, 100, 0.87); // cor cinza médio
+    --gray-400: rgba(76, 78, 100, 0.68); // cor cinza mais suave
 
    //fonts
    --primary-font: "Inter" , sans-serif;

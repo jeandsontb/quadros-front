@@ -29,7 +29,7 @@ export default {
     align-items: center;
     justify-content: center;
     position: relative;
-    height: ${(props) => (props.height ? props.height : "3rem")};
+    height: ${(props) => (props.height ? props.height : "2.625rem")};
     width: ${(props) => (props.width ? props.width : "100%")};
     text-decoration: none;
     margin-bottom: ${(props) => props.mb};

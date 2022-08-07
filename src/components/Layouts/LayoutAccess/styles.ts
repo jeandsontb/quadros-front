@@ -43,11 +43,12 @@ export default {
     left: 0;
     right: 0;
     margin: auto;
-    width: 100px;
-    height: 100px;
+    width: fit-content;
+    height: fit-content;
     background: var(--white);
     box-shadow: 0px 2px 10px rgba(76, 78, 100, 0.22);
     border-radius: 10px;
     padding: 28px;
+    z-index: 9;
   `,
 };
