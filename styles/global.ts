@@ -9,6 +9,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
+    background-color: rgba(76, 78, 100, 0.05);
     -webkit-font-smoothing: antialiased;
 
     &.lockScroll {
@@ -58,7 +59,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   :root {
-    --main:#2AD2C9;
+    --main:#26C6F9;
     --secondary:#1B1D36;
     --bg:#F6F8F9;
     --white: #ffffff;
