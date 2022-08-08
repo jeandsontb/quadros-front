@@ -43,6 +43,7 @@ export default {
     left: 0;
     right: 0;
     margin: auto;
+    max-width: 592px;
     width: fit-content;
     height: fit-content;
     background: var(--white);
