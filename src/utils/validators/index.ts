@@ -93,14 +93,13 @@ export const registerStepTwo = yup.object().shape({
 export const registerStepTree = yup.object().shape({
   cep: yup
     .string()
-    .min(5)
     .required("Campo cep é obrigatório")
     .test("cep Test", "CEP inválido", (value) => isCEP(value ? value : "")),
   address: yup
     .string()
     .min(3, "Mínimo três caracteres")
     .required("Campo endereço é obrigatório"),
-  number: yup.string().required("Campo número é obrigatório"),
+  number: yup.string().required("Obrigatório"),
   district: yup
     .string()
     .min(5, "Mínimo cinco caracteres")

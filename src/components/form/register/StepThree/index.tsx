@@ -19,6 +19,8 @@ import { toast } from "react-toastify";
 import { CustomToast } from "../../../../components/CustomTostfy";
 import { registerStepTree } from "../../../../utils/validators";
 import { maskCepNumber } from "../../../../utils/masks/cep";
+import { ButtonCustom } from "../../Button";
+import { EnumButtonVariant } from "../../../../assets/config/ButtonVariant";
 
 interface FormData {
   cep: string;
@@ -51,6 +53,7 @@ const StepThree = ({ setStepForm, setObjectStep, objectStep }: PropsForm) => {
     control,
     handleSubmit,
     formState: { errors },
+    getValues,
     reset,
   } = useForm({
     defaultValues,
@@ -74,50 +77,50 @@ const StepThree = ({ setStepForm, setObjectStep, objectStep }: PropsForm) => {
   };
 
   const verifyAddressInCep = async () => {
-    // const cepInformed = control.fieldsRef.current.cep?._f.value;
-    // const cepFormated = cepInformed?.replace("-", "").trim();
-    // if (cepInformed) {
-    //   try {
-    //     const { data } = await axios.get(
-    //       `https://viacep.com.br/ws/${cepFormated}/json/`
-    //     );
-    //     if (data.erro === "true") {
-    //       toast(
-    //         <CustomToast
-    //           status="warn"
-    //           title="Busca do cep!"
-    //           message="Cep informado não encontrado."
-    //         />
-    //       );
-    //       reset(defaultValues);
-    //       return;
-    //     }
-    //     const getAddressUser = {
-    //       cep: data.cep,
-    //       address: data.logradouro,
-    //       number: "",
-    //       district: data.bairro,
-    //       complement: "",
-    //       uf: data.uf,
-    //       city: data.localidade,
-    //     };
-    //     reset(getAddressUser);
-    //   } catch (err) {
-    //     toast(
-    //       <CustomToast
-    //         status="error"
-    //         title="Opss!"
-    //         message="Falha ao buscar cep"
-    //       />
-    //     );
-    //   }
-    // }
+    const { cep: cepInformed } = getValues();
+    const cepFormated = cepInformed?.replace("-", "").trim();
+    if (cepInformed) {
+      try {
+        const { data } = await axios.get(
+          `https://viacep.com.br/ws/${cepFormated}/json/`
+        );
+        if (data.erro === "true") {
+          toast(
+            <CustomToast
+              status="warn"
+              title="Busca do cep!"
+              message="Cep informado não encontrado."
+            />
+          );
+          reset(defaultValues);
+          return;
+        }
+        const getAddressUser = {
+          cep: data.cep,
+          address: data.logradouro,
+          number: "",
+          district: data.bairro,
+          complement: "",
+          uf: data.uf,
+          city: data.localidade,
+        };
+        reset(getAddressUser);
+      } catch (err) {
+        toast(
+          <CustomToast
+            status="error"
+            title="Opss!"
+            message="Falha ao buscar cep"
+          />
+        );
+      }
+    }
   };
 
   return (
     <Fragment>
       <form noValidate autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
-        <FormControl fullWidth sx={{ mb: 4 }}>
+        <FormControl fullWidth sx={{ mb: 2 }}>
           <Controller
             name="cep"
             control={control}
@@ -133,13 +136,13 @@ const StepThree = ({ setStepForm, setObjectStep, objectStep }: PropsForm) => {
             )}
           />
           {errors.cep && (
-            <FormHelperText sx={{ color: "error.main" }}>
+            <FormHelperText sx={{ color: "var(--red-500)" }}>
               {errors.cep.message}
             </FormHelperText>
           )}
         </FormControl>
 
-        <Box sx={{ mb: 4, display: "flex", width: "100%" }}>
+        <Box sx={{ mb: 2, display: "flex", width: "100%" }}>
           <FormControl sx={{ display: "flex", flex: 3, marginRight: "1rem" }}>
             <Controller
               name="address"
@@ -156,7 +159,7 @@ const StepThree = ({ setStepForm, setObjectStep, objectStep }: PropsForm) => {
               )}
             />
             {errors.address && (
-              <FormHelperText sx={{ color: "error.main" }}>
+              <FormHelperText sx={{ color: "var(--red-500)" }}>
                 {errors.address.message}
               </FormHelperText>
             )}
@@ -178,14 +181,14 @@ const StepThree = ({ setStepForm, setObjectStep, objectStep }: PropsForm) => {
               )}
             />
             {errors.number && (
-              <FormHelperText sx={{ color: "error.main" }}>
+              <FormHelperText sx={{ color: "var(--red-500)" }}>
                 {errors.number.message}
               </FormHelperText>
             )}
           </FormControl>
         </Box>
 
-        <FormControl fullWidth sx={{ mb: 4 }}>
+        <FormControl fullWidth sx={{ mb: 2 }}>
           <Controller
             name="district"
             control={control}
@@ -201,13 +204,13 @@ const StepThree = ({ setStepForm, setObjectStep, objectStep }: PropsForm) => {
             )}
           />
           {errors.district && (
-            <FormHelperText sx={{ color: "error.main" }}>
+            <FormHelperText sx={{ color: "var(--red-500)" }}>
               {errors.district.message}
             </FormHelperText>
           )}
         </FormControl>
 
-        <FormControl fullWidth sx={{ mb: 4 }}>
+        <FormControl fullWidth sx={{ mb: 2 }}>
           <Controller
             name="complement"
             control={control}
@@ -223,13 +226,13 @@ const StepThree = ({ setStepForm, setObjectStep, objectStep }: PropsForm) => {
             )}
           />
           {errors.complement && (
-            <FormHelperText sx={{ color: "error.main" }}>
+            <FormHelperText sx={{ color: "var(--red-500)" }}>
               {errors.complement.message}
             </FormHelperText>
           )}
         </FormControl>
 
-        <Box sx={{ mb: 4, display: "flex", width: "100%" }}>
+        <Box sx={{ mb: 2, display: "flex", width: "100%" }}>
           <FormControl sx={{ marginRight: "1rem", display: "flex", flex: 1 }}>
             <InputLabel
               htmlFor="auth-register-v2-uf"
@@ -256,7 +259,7 @@ const StepThree = ({ setStepForm, setObjectStep, objectStep }: PropsForm) => {
               )}
             />
             {errors.uf && (
-              <FormHelperText sx={{ color: "error.main" }}>
+              <FormHelperText sx={{ color: "var(--red-500)" }}>
                 {errors.uf.message}
               </FormHelperText>
             )}
@@ -288,41 +291,20 @@ const StepThree = ({ setStepForm, setObjectStep, objectStep }: PropsForm) => {
               )}
             />
             {errors.city && (
-              <FormHelperText sx={{ color: "error.main" }}>
+              <FormHelperText sx={{ color: "var(--red-500)" }}>
                 {errors.city.message}
               </FormHelperText>
             )}
           </FormControl>
         </Box>
 
-        <Button
-          fullWidth
-          size="large"
+        <ButtonCustom
+          title="Continuar"
+          variant={EnumButtonVariant.FILLED_SECONDARY}
           type="submit"
-          variant="contained"
-          sx={{ mb: 7, background: "#26C6F9" }}
         >
           Continuar
-        </Button>
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            flexWrap: "wrap",
-            justifyContent: "center",
-          }}
-        >
-          <Typography sx={{ mr: 2, color: "text.secondary" }}>
-            Já tem uma conta?
-          </Typography>
-          <Typography>
-            <Link passHref href="/login">
-              <Typography component={MuiLink} sx={{ color: "primary.main" }}>
-                Fazer login!
-              </Typography>
-            </Link>
-          </Typography>
-        </Box>
+        </ButtonCustom>
       </form>
     </Fragment>
   );

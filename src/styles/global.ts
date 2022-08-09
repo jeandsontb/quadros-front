@@ -70,6 +70,8 @@ export const GlobalStyle = createGlobalStyle`
     --gray-500: rgba(76, 78, 100, 0.87); // cor cinza médio
     --gray-400: rgba(76, 78, 100, 0.68); // cor cinza mais suave
 
+    --red-500: #FF4D49; // cor de alerta
+
    //fonts
    --primary-font: "Inter" , sans-serif;
    --secondary-font: "Quicksand", sans-serif;

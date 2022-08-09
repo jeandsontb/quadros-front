@@ -130,7 +130,7 @@ const Register = () => {
             Já tem uma conta?
           </Typography>
           <Typography>
-            <Link passHref href="/login">
+            <Link passHref href="/">
               <Typography component={MuiLink} sx={{ color: "var(--main)" }}>
                 Fazer login!
               </Typography>

@@ -16,6 +16,8 @@ import MuiLink from "@mui/material/Link";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { EyeOffOutline, EyeOutline } from "mdi-material-ui";
 import { registerStepFour } from "../../../../utils/validators";
+import { ButtonCustom } from "../../Button";
+import { EnumButtonVariant } from "../../../../assets/config/ButtonVariant";
 
 const defaultValues = {
   password: "",
@@ -67,7 +69,7 @@ const StepFour = ({
   return (
     <Fragment>
       <form noValidate autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
-        <FormControl fullWidth sx={{ mb: 4 }}>
+        <FormControl fullWidth sx={{ mb: 2 }}>
           <InputLabel
             htmlFor="auth-register-v2-password"
             error={Boolean(errors.password)}
@@ -101,7 +103,7 @@ const StepFour = ({
             )}
           />
           {errors.password && (
-            <FormHelperText sx={{ color: "error.main" }}>
+            <FormHelperText sx={{ color: "var(--red-500)" }}>
               {errors.password.message}
             </FormHelperText>
           )}
@@ -143,40 +145,19 @@ const StepFour = ({
             )}
           />
           {errors.confirmPassword && (
-            <FormHelperText sx={{ color: "error.main" }}>
+            <FormHelperText sx={{ color: "var(--red-500)" }}>
               {errors.confirmPassword.message}
             </FormHelperText>
           )}
         </FormControl>
 
-        <Button
-          fullWidth
-          size="large"
+        <ButtonCustom
+          title="Concluir cadastro"
+          variant={EnumButtonVariant.FILLED_SECONDARY}
           type="submit"
-          variant="contained"
-          sx={{ mb: 7, background: "#26C6F9" }}
         >
           Concluir cadastro
-        </Button>
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            flexWrap: "wrap",
-            justifyContent: "center",
-          }}
-        >
-          <Typography sx={{ mr: 2, color: "text.secondary" }}>
-            Já tem uma conta?
-          </Typography>
-          <Typography>
-            <Link passHref href="/login">
-              <Typography component={MuiLink} sx={{ color: "primary.main" }}>
-                Fazer login!
-              </Typography>
-            </Link>
-          </Typography>
-        </Box>
+        </ButtonCustom>
       </form>
     </Fragment>
   );

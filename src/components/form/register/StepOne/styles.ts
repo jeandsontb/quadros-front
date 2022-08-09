@@ -7,11 +7,9 @@ type ComponentProps = {
 
 export default {
   StepAnimation: styled(Box)<ComponentProps>`
-    min-height: ${({ effect }) => (effect === "cpf" ? "500px" : "610px")};
-    max-height: ${({ effect }) => (effect === "cpf" ? "560px" : "720px")};
-    transition: all ease 0.8s;
-    overflow: hidden;
-    overflow-y: auto;
+    min-height: ${({ effect }) => (effect === "cpf" ? "400px" : "500px")};
+    max-height: ${({ effect }) => (effect === "cpf" ? "520px" : "700px")};
+    transition: all ease 0.5s;
   `,
   FormCnpj: styled(Box)<ComponentProps>`
     visibility: ${({ effect }) => (effect === "cpf" ? "hidden" : "visible")};

@@ -121,7 +121,7 @@ const StepOne = ({ setStepForm, setObjectStep, objectStep }: PropsForm) => {
             )}
           />
           {errors.username && (
-            <FormHelperText sx={{ color: "error.main" }}>
+            <FormHelperText sx={{ color: "var(--red-500)" }}>
               {errors.username.message}
             </FormHelperText>
           )}
@@ -142,7 +142,7 @@ const StepOne = ({ setStepForm, setObjectStep, objectStep }: PropsForm) => {
             )}
           />
           {errors.lastname && (
-            <FormHelperText sx={{ color: "error.main" }}>
+            <FormHelperText sx={{ color: "var(--red-500)" }}>
               {errors.lastname.message}
             </FormHelperText>
           )}
@@ -163,7 +163,7 @@ const StepOne = ({ setStepForm, setObjectStep, objectStep }: PropsForm) => {
             )}
           />
           {errors.email && (
-            <FormHelperText sx={{ color: "error.main" }}>
+            <FormHelperText sx={{ color: "var(--red-500)" }}>
               {errors.email.message}
             </FormHelperText>
           )}
@@ -184,7 +184,7 @@ const StepOne = ({ setStepForm, setObjectStep, objectStep }: PropsForm) => {
             )}
           />
           {errors.cpf && (
-            <FormHelperText sx={{ color: "error.main" }}>
+            <FormHelperText sx={{ color: "var(--red-500)" }}>
               {errors.cpf.message}
             </FormHelperText>
           )}
@@ -208,7 +208,7 @@ const StepOne = ({ setStepForm, setObjectStep, objectStep }: PropsForm) => {
                 )}
               />
               {errors.cnpj && (
-                <FormHelperText sx={{ color: "error.main" }}>
+                <FormHelperText sx={{ color: "var(--red-500)" }}>
                   {errors.cnpj.message}
                 </FormHelperText>
               )}
@@ -230,7 +230,7 @@ const StepOne = ({ setStepForm, setObjectStep, objectStep }: PropsForm) => {
                 )}
               />
               {errors.company_name && (
-                <FormHelperText sx={{ color: "error.main" }}>
+                <FormHelperText sx={{ color: "var(--red-500)" }}>
                   {errors.company_name.message}
                 </FormHelperText>
               )}

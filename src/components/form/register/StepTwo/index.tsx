@@ -1,21 +1,21 @@
 import { Fragment } from "react";
 import {
-  Box,
   Button,
   FormControl,
   TextField,
-  Typography,
   Select,
   MenuItem,
   InputLabel,
+  InputAdornment,
 } from "@mui/material";
 import { useForm, Controller } from "react-hook-form";
 import FormHelperText from "@mui/material/FormHelperText";
-import Link from "next/link";
-import MuiLink from "@mui/material/Link";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { registerStepTwo } from "../../../../utils/validators";
 import { maskPhoneNumber } from "../../../../utils/masks/phone";
+import { ButtonCustom } from "../../Button";
+import { EnumButtonVariant } from "../../../../assets/config/ButtonVariant";
 
 const defaultValues = {
   birthDate: "",
@@ -62,7 +62,7 @@ const StepTwo = ({ setStepForm, setObjectStep, objectStep }: PropsForm) => {
   return (
     <Fragment>
       <form noValidate autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
-        <FormControl fullWidth sx={{ mb: 4 }}>
+        <FormControl fullWidth sx={{ mb: 2 }}>
           <Controller
             name="birthDate"
             control={control}
@@ -76,16 +76,23 @@ const StepTwo = ({ setStepForm, setObjectStep, objectStep }: PropsForm) => {
                 InputLabelProps={{ shrink: true }}
                 onChange={onChange}
                 error={Boolean(errors.birthDate)}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="start">
+                      <CalendarMonthIcon />
+                    </InputAdornment>
+                  ),
+                }}
               />
             )}
           />
           {errors.birthDate && (
-            <FormHelperText sx={{ color: "error.main" }}>
+            <FormHelperText sx={{ color: "var(--red-500)" }}>
               {errors.birthDate.message}
             </FormHelperText>
           )}
         </FormControl>
-        <FormControl fullWidth sx={{ mb: 4 }}>
+        <FormControl fullWidth sx={{ mb: 2 }}>
           <Controller
             name="phone"
             control={control}
@@ -101,12 +108,12 @@ const StepTwo = ({ setStepForm, setObjectStep, objectStep }: PropsForm) => {
             )}
           />
           {errors.phone && (
-            <FormHelperText sx={{ color: "error.main" }}>
+            <FormHelperText sx={{ color: "var(--red-500)" }}>
               {errors.phone.message}
             </FormHelperText>
           )}
         </FormControl>
-        <FormControl fullWidth sx={{ mb: 4 }}>
+        <FormControl fullWidth sx={{ mb: 2 }}>
           <InputLabel
             htmlFor="auth-register-v2-sex"
             error={Boolean(errors.sex)}
@@ -132,13 +139,13 @@ const StepTwo = ({ setStepForm, setObjectStep, objectStep }: PropsForm) => {
             )}
           />
           {errors.sex && (
-            <FormHelperText sx={{ color: "error.main" }}>
+            <FormHelperText sx={{ color: "var(--red-500)" }}>
               {errors.sex.message}
             </FormHelperText>
           )}
         </FormControl>
 
-        <FormControl fullWidth sx={{ mb: 4 }}>
+        <FormControl fullWidth sx={{ mb: 2 }}>
           <InputLabel
             htmlFor="auth-register-v2-segment"
             error={Boolean(errors.sex)}
@@ -163,40 +170,19 @@ const StepTwo = ({ setStepForm, setObjectStep, objectStep }: PropsForm) => {
             )}
           />
           {errors.segment && (
-            <FormHelperText sx={{ color: "error.main" }}>
+            <FormHelperText sx={{ color: "var(--red-500)" }}>
               {errors.segment.message}
             </FormHelperText>
           )}
         </FormControl>
 
-        <Button
-          fullWidth
-          size="large"
+        <ButtonCustom
+          title="Continuar"
+          variant={EnumButtonVariant.FILLED_SECONDARY}
           type="submit"
-          variant="contained"
-          sx={{ mb: 7, background: "#26C6F9" }}
         >
           Continuar
-        </Button>
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            flexWrap: "wrap",
-            justifyContent: "center",
-          }}
-        >
-          <Typography sx={{ mr: 2, color: "text.secondary" }}>
-            Já tem uma conta?
-          </Typography>
-          <Typography>
-            <Link passHref href="/login">
-              <Typography component={MuiLink} sx={{ color: "primary.main" }}>
-                Fazer login!
-              </Typography>
-            </Link>
-          </Typography>
-        </Box>
+        </ButtonCustom>
       </form>
     </Fragment>
   );
