@@ -10,6 +10,8 @@ const Studio = () => {
           <CrmAward />
         </Grid>
       </Grid>
+
+      <Grid item xs={6} sm={3} md={2}></Grid>
     </Box>
   );
 };
