@@ -72,6 +72,21 @@ export const GlobalStyle = createGlobalStyle`
 
     --red-500: #FF4D49; // cor de alerta
 
+    //Gráfico TotalGrowth
+    --blue-500: #666CFF;
+    --green-400: #72E128;
+    --green-500: #72E128;
+    --gray-700: #6D788D;
+
+    //Gráfico session
+    --blue-s-300: #26C6F9;
+    --green-s-400: #72E128;
+
+    //Linear progress
+    --blue-l-400: #26C6F9;
+    --blue-l-200: #abe1f1;
+
+
    //fonts
    --primary-font: "Inter" , sans-serif;
    --secondary-font: "Quicksand", sans-serif;

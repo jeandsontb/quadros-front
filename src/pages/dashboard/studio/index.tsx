@@ -1,6 +1,9 @@
 import { Box, Grid } from "@mui/material";
 import React from "react";
 import { CrmAward } from "../../../components/CrmAward";
+import { CrmTotalGrowth } from "../../../components/dashboard/CrmTotalGrowth";
+import { LinearProgressLine } from "../../../components/dashboard/LinearProgress";
+import { AnalyticsSessions } from "../../../components/dashboard/Sessions";
 
 const Studio = () => {
   return (
@@ -11,7 +14,13 @@ const Studio = () => {
         </Grid>
       </Grid>
 
-      <Grid item xs={6} sm={3} md={2}></Grid>
+      <CrmTotalGrowth />
+
+      <AnalyticsSessions />
+
+      <Grid item xs={6} sm={3} md={2} padding={10}>
+        <LinearProgressLine />
+      </Grid>
     </Box>
   );
 };
