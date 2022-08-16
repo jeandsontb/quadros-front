@@ -4,7 +4,7 @@ import { LinearProgress } from "@mui/material";
 const LinearProgressLine = () => {
   return (
     <LinearProgress
-      value={24}
+      value={40}
       variant="determinate"
       sx={{
         height: 10,
